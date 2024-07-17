@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Grid } from "@mui/material";
+import { LeftSideBar } from "./component/LeftSideBar";
+import { CreateSubadmin } from "./component/CreateSubadmin";
+import { MiniAdminDeatils } from "./component/MiniAdminDeatils";
+import { ClientDetails } from "./component/ClientDetails";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Grid container>
+        <Grid className="h-screen" item xs={2}>
+          <LeftSideBar />
+        </Grid>
+        <Grid className="h-screen bg-slate-300" item xs={10}>
+          <Routes>
+            <Route path="/" element={<CreateSubadmin />} />
+            <Route path="/create-subadmin" element={<CreateSubadmin />} />
+            <Route path="/mini-admin-details" element={<MiniAdminDeatils />} />
+            <Route path="/client-details" element={<ClientDetails />} />
+           
+          </Routes>
+        </Grid>
+      </Grid>
+    </Router>
   );
 }
 
